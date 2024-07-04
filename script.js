@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function botMove() { 
         let botMv = Math.floor(Math.random() * 14);
-        console.log('botMv', botMv)
+        displayBotMove(botMv)
 
         if ((botMv - 7) < 0) {
             const emptyRow = getEmptyRow(botMv);
@@ -101,6 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         playerCanMove = true;
+    }
+
+    function displayBotMove(move) {
+        console.log("funccall", move);
+        const botmovedisplay = document.getElementById('bot-move');
+        if ((move - 7) < 0) {
+            botmovedisplay.textContent = `Bot Move: Drop Col -> ${move}`;
+        }
+        else {
+            botmovedisplay.textContent = `Bot Move: Pop Col -> ${move - 7}`;
+        }
     }
 
     function dropCoin(row, col, player, callback) {
